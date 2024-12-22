@@ -16,6 +16,18 @@ const SideNav = () => {
   const [hash, setHash] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
+  const navItems = [
+    { href: "#repositories", icon: <Home size={20} />, label: "Repositories" },
+    { href: "#reviews", icon: <Code2 size={20} />, label: "AI Code Review" },
+    { href: "#security", icon: <Cloud size={20} />, label: "Cloud Security" },
+    {
+      href: "#how-to-use",
+      icon: <FileQuestion size={20} />,
+      label: "How to Use",
+    },
+    { href: "#settings", icon: <Settings size={20} />, label: "Settings" },
+  ];
+
   useEffect(() => {
     const getHashFromURL = () => {
       const currentHash = window.location.hash;
@@ -40,10 +52,7 @@ const SideNav = () => {
           className="text-2xl transition-all"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {
-            // If the sidebar is open, show the close icon, else show the menu icon
-            isOpen ? <IoClose /> : <LuMenu />
-          }
+          {isOpen ? <IoClose /> : <LuMenu />}
         </button>
       </div>
 
@@ -57,7 +66,7 @@ const SideNav = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed w-full md:w-64 h-2/3 md:h-screen overflow-y-auto bg-white p-4 pt-0 flex flex-col transition-all duration-300 z-20
+        className={`fixed w-full md:w-64 h-2/3 md:h-screen overflow-y-auto custom-scrollbar bg-white p-4 pt-0 flex flex-col transition-all duration-300 z-20
           md:left-0 md:top-0 md:border-r border-b
           ${isOpen ? "top-0" : "-top-full"} 
           md:transform-none`}
@@ -76,73 +85,24 @@ const SideNav = () => {
         </div>
 
         {/* Main Navigation */}
-        <nav className="flex-1 min-h-32 overflow-y-auto">
+        <nav className="flex-1 min-h-32 overflow-y-auto custom-scrollbar">
           <div className="space-y-1">
-            <a
-              href="#repositories"
-              className={`flex items-center gap-3 p-2 rounded-lg 
-                ${
-                  hash === "repositories"
-                    ? "bg-blue-600 text-white"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <Home size={20} />
-              <span>Repositories</span>
-            </a>
-
-            <a
-              href="#reviews"
-              className={`flex items-center gap-3 p-2 rounded-lg ${
-                hash === "reviews"
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <Code2 size={20} />
-              <span>AI Code Review</span>
-            </a>
-
-            <a
-              href="#security"
-              className={`flex items-center gap-3 p-2 rounded-lg ${
-                hash === "security"
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <Cloud size={20} />
-              <span>Cloud Security</span>
-            </a>
-
-            <a
-              href="#how-to-use"
-              className={`flex items-center gap-3 p-2 rounded-lg ${
-                hash === "how-to-use"
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <FileQuestion size={20} />
-              <span>How to Use</span>
-            </a>
-
-            <a
-              href="#settings"
-              className={`flex items-center gap-3 p-2 rounded-lg ${
-                hash === "settings"
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`}
-              onClick={() => setIsOpen(false)}
-            >
-              <Settings size={20} />
-              <span>Settings</span>
-            </a>
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`flex items-center gap-3 p-2 rounded-lg 
+                  ${
+                    hash === item.href.replace("#", "")
+                      ? "bg-blue-600 text-white"
+                      : "text-gray-700 hover:bg-gray-100"
+                  }`}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.icon}
+                <span>{item.label}</span>
+              </a>
+            ))}
           </div>
         </nav>
 
