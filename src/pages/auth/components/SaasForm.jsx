@@ -27,7 +27,7 @@ const SaasForm = () => {
 
       setTimeout(() => {
         setShowAlert(false); // Hide alert after 3 seconds
-        navigate("/repositories"); // Redirect to repositories
+        navigate("/repositories#repositories"); // Redirect to repositories
       }, 1000);
     }, 2000); // Simulating a 2-second delay
   };
