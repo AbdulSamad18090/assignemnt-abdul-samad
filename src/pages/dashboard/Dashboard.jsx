@@ -28,10 +28,10 @@ const Dashboard = () => {
 
   const pages = {
     repositories: <Repositories />,
-    reviews: <h1 className="w-full bg-blue-500">AI Code Review</h1>,
-    security: <h1 className="w-full bg-blue-500">Cloud Security</h1>,
-    "how-to-use": <h1 className="w-full bg-blue-500">How to Use</h1>,
-    settings: <h1 className="w-full bg-blue-500">Settings</h1>,
+    reviews: <h1>AI Code Review</h1>,
+    security: <h1>Cloud Security</h1>,
+    "how-to-use": <h1>How to Use</h1>,
+    settings: <h1>Settings</h1>,
   };
 
   return (
@@ -42,7 +42,7 @@ const Dashboard = () => {
       </section>
       {/* Dynamic Content Area */}
       <section className="md:ml-64 w-full h-screen bg-white p-4 md:mt-0 mt-14">
-        {pages[hash] || <h1 className="w-full bg-gray-500">Default Content</h1>}
+        {pages[hash]}
       </section>
     </div>
   );

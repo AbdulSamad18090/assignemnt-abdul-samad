@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FaDatabase, FaPlus } from "react-icons/fa";
 import { SlRefresh } from "react-icons/sl";
 import RepositoriesData from "../../../lib/JsonData/Repositories.json";
 import { GoDotFill } from "react-icons/go";
+import { ImSpinner8 } from "react-icons/im";
 
 const Repositories = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true); // Added loading state
 
   // Filter repositories based on search query
   const filteredRepositories = RepositoriesData.repositories.filter((repo) =>
@@ -26,6 +28,15 @@ const Repositories = () => {
     return `Updated ${diffInDays} day${diffInDays !== 1 ? "s" : ""} ago`;
   }
 
+  useEffect(() => {
+    // Simulate a loading delay of 3 seconds
+    const timer = setTimeout(() => {
+      setLoading(false); // Stop loading after 3 seconds
+    }, 2000);
+
+    return () => clearTimeout(timer); // Clean up the timeout on component unmount
+  }, []);
+
   return (
     <div className="h-full">
       {/* Header */}
@@ -34,7 +45,7 @@ const Repositories = () => {
           <div>
             <h1 className="text-2xl font-bold">Repositories</h1>
             <p className="text-neutral-600 text-sm">
-              {filteredRepositories.length} Total Repositories
+              {RepositoriesData.repositories.length} Total Repositories
             </p>
           </div>
           <div className="flex gap-4 items-center flex-wrap">
@@ -62,7 +73,11 @@ const Repositories = () => {
 
       {/* Repository List */}
       <div className="mt-4 h-[calc(100vh-160px)] custom-scrollbar overflow-y-auto">
-        {filteredRepositories.length > 0 ? (
+        {loading ? (
+          <div className="flex items-center justify-center h-32">
+            <ImSpinner8 className="text-3xl animate-spin text-blue-600" />
+          </div> // Show loading message
+        ) : filteredRepositories.length > 0 ? (
           filteredRepositories.map((repo) => (
             <div
               key={repo.name}
