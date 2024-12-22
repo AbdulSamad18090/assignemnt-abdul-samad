@@ -66,7 +66,7 @@ const SideNav = () => {
 
       {/* Sidebar */}
       <div
-        className={`fixed w-full md:w-64 h-2/3 md:h-screen overflow-y-auto custom-scrollbar bg-white p-4 pt-0 flex flex-col transition-all duration-300 z-20
+        className={`fixed w-full md:w-64 h-fit md:h-screen overflow-y-auto custom-scrollbar bg-white p-4 pt-0 flex flex-col transition-all duration-300 z-20
           md:left-0 md:top-0 md:border-r border-b
           ${isOpen ? "top-0" : "-top-full"} 
           md:transform-none`}
@@ -85,7 +85,7 @@ const SideNav = () => {
         </div>
 
         {/* Main Navigation */}
-        <nav className="flex-1 min-h-32 overflow-y-auto custom-scrollbar">
+        <nav className="flex-1 md:min-h-32 min-h-fit overflow-y-auto custom-scrollbar">
           <div className="space-y-1">
             {navItems.map((item) => (
               <a
