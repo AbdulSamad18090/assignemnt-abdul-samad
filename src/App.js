@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import AuthPage from "./pages/auth/Auth";
-import RepositoriesPage from "./pages/repositories/Repositories";
+import Dashboard from "./pages/dashboard/Dashboard";
 import Home from "./pages/home/Home";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" element={<Home />} />
         <Route path="/auth" element={<AuthPage />} />
-        <Route path="/repositories" element={<RepositoriesPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </>
   );

@@ -6,16 +6,17 @@ const Alert = ({ message, type, onClose }) => {
 
   switch (type) {
     case "success":
-      alertClass = "bg-green-100 border border-green-500 text-green-500 text-white";
+      alertClass =
+        "bg-green-100 border border-green-500 text-green-500 text-green-500";
       break;
     case "error":
-      alertClass = "bg-red-100 border border-green-500 text-white";
+      alertClass = "bg-red-100 border border-red-500 text-red-500";
       break;
     case "info":
-      alertClass = "bg-blue-100 border border-green-500 text-white";
+      alertClass = "bg-blue-100 border border-blue-500 text-blue-500";
       break;
     default:
-      alertClass = "bg-gray-100 border border-green-500 text-white";
+      alertClass = "bg-gray-100 border border-yellow-500 text-yellow-500";
   }
 
   return (
@@ -26,7 +27,7 @@ const Alert = ({ message, type, onClose }) => {
         <div>{message}</div>
         <button
           onClick={onClose}
-          className="bg-transparent text-green-500 font-bold text-xl"
+          className="font-bold text-xl"
         >
           <IoClose />
         </button>
