@@ -6,8 +6,8 @@ const AuthPage = () => {
   const [activeTab, setActiveTab] = useState("SAAS");
 
   return (
-    <div className="h-screen w-full grid grid-cols-2">
-      <section className="relative w-full h-full flex items-center justify-center bg-white">
+    <div className="h-screen w-full grid grid-cols-1 md:grid-cols-2">
+      <section className="relative w-full h-full hidden md:flex items-center justify-center bg-white">
         <img
           src="/images/Group 37111.png"
           alt="img"
@@ -38,7 +38,7 @@ const AuthPage = () => {
           {/* Tabs */}
           <div className="w-full flex items-center mt-2 border rounded-lg">
             <button
-              className={`rounded w-full h-12 transition-colors ${
+              className={`rounded w-full h-12 transition-colors font-semibold ${
                 activeTab === "SAAS"
                   ? "bg-blue-600 text-white"
                   : "hover:bg-gray-50"
@@ -48,7 +48,7 @@ const AuthPage = () => {
               SAAS
             </button>
             <button
-              className={`rounded w-full h-12 transition-colors ${
+              className={`rounded w-full h-12 transition-colors font-semibold ${
                 activeTab === "Self Hosted"
                   ? "bg-blue-600 text-white"
                   : "hover:bg-gray-50"
